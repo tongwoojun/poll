@@ -1,0 +1,77 @@
+/* --------------------------------
+(C) Comsenz Inc.
+http://www.comsenz.com
+----------------------------------*/
+* { margin: 0; padding: 0; }
+body { background: #D3DDDC url(../images/bg1.jpg) repeat-x 0 0; } /** ±³¾°Í¼Æ¬ **/
+body, input, button, select, textarea { font:12px Tahoma,Helvetica,sans-serif;color:#333; }
+textarea { resize: none; }
+table { empty-cells: show; border-collapse: collapse; }
+caption, th { text-align: left; font-weight: 400; }
+ul li { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 14px; }
+em, cite { font-style: normal; }
+a { color: #333; text-decoration: none; }
+a:hover { color: #356CA7; text-decoration: underline; }
+a img { border: none; }
+
+.topnav { margin-bottom: 40px; height: 30px;text-shadow: 1px 1px 1px #FFF; }
+
+.wp { margin: 0 auto 20px; width:978px; }
+#hd { padding: 10px 0; }
+.mn { padding: 20px; border: 3px solid #C9D3D2; background: #FFF; -moz-border-radius: 8px; } /**  ±ß¿òÏß **/
+.info { margin-bottom: 20px; }
+.info h1 { padding: 8px 0; font-weight: 100; font-size: 22px; text-align: center; color: #333; } /** ±êÌâ **/
+.info p { line-height: 22px; font-size: 14px; color: #666; }
+#ft { margin-top: 30px; padding-top: 10px; border-top: 1px solid #CCC ; text-align: center; color: #666; }
+#ft p { padding: 5px 0; }
+.wx {
+font-family: "Microsoft YaHei", "Hiragino Sans GB", STHeiti, Tahoma, SimHei, sans-serif;
+font-weight: 100;
+}
+
+.poll {}
+.poll table { width: 100%;margin-bottom: 10px;}
+.poll th { padding: 14px 2px 8px 2px; background: #F5F5F5; font-weight: 700; }
+.poll th, .poll td {padding:8px 2px; }
+.poll .o { width: 30px; text-align:center; }
+.poll .pbg { height: 16px; background: url(../images/pllb.png) repeat-x 0 0; -moz-border-radius: 0 6px 6px 0; }
+.poll .pbr { height: 16px ; background: #009B9B url(../images/pllb.png) repeat-x 0 -16px; -moz-border-radius: 0 6px 6px 0;  }
+
+.poll .title label { display: block; cursor: pointer; }
+.poll .title .question{height:80px;}
+.poll .title .question .title{height: 25px}
+.poll .title .question .select{height: 30px;border-bottom: 1px solid #EEE;}
+.poll .title .question .select li { float:left;list-style-type:none;margin-right: 50px;}
+.poll .title .question .select label {display:inline;}
+.poll .num { width: 70px; }
+
+.ppl { padding-top: 5px; }
+.ppl li { float: left; margin: 0 5px; padding: 11px 11px 0; width: 176px; height: 255px; background: url(../images/pic.png) no-repeat 0 0; overflow: hidden; display:inline; }
+.ppl li .thumb { width: 176px; height: 176px; display: table-cell; vertical-align:middle; text-align: center; outline:none; *display: block; *font-size: 154px; *font-family:Arial; *line-height:0; overflow: hidden; cursor: pointer; }/*0.873*/
+.ppl li .thumb a { }
+.ppl li .thumb img{vertical-align:middle;}
+.ppl li .c { margin-top: 8px; padding-top: 4px; color: #999; }
+.ppl li .c h3 { height: 20px; width: 100%; white-space:nowrap; overflow: hidden; color: #333; }
+.ppl li .c strong { color: #333; }
+.ppl li .c button { float: right; }
+
+.btn { text-align:center; margin-top: 20px;}
+.btn_poll { padding-left: 20px; border: none; background: url(../images/btn_poll.gif) no-repeat 4px 50%; color: #369; cursor: pointer;}
+.submit { margin: 0 auto; width: 84px; height: 34px; border: none; background: url(../images/btn_submit.gif) no-repeat 0 0; text-indent:-9999px; display: block; overflow: hidden; cursor: pointer;}
+
+.pc_l, .pc_c, .pc_inner, .pc_r { width: 29px; height: 56px; line-height: 56px; background: url(../images/popupcredit_bg.gif) no-repeat 0 0; }
+.pc_c { width: 200px; background-position: 0 -56px; background-repeat: repeat-x; }
+.pc_inner { white-space: nowrap; text-align: center; width: auto; background-position: 50% -112px; color: #FFF; font-size: 14px; }
+.pc_inner i { margin-right: 10px; font-size: 12px; font-style: normal; color: #FFF; font-weight: 400; }
+.pc_inner span { margin-right: 15px; color: #FFEA97; font-size: 14px; font-weight: 700; }
+* html .pc_inner span { display: inline-block; }
+.pc_inner span a { color: #FFEA97; text-decoration: underline; }
+.pc_inner span em { color: #FFF; font-size: 18px; font-weight: 400; }
+.pc_inner span u { font-size: 10px; text-decoration: none; }
+.pc_inner span em.desc { color: #930; }
+.pc_btn img { opacity: 0.5; }
+.pc_btn:hover img { opacity: 1; }
+.pc_r { background-position: -30px 0; }
+
+#ajaxwaitid{display:none;position:absolute;right:0;top:30;z-index:1;padding:2px 6px;background:#D00;color:#FFF;}

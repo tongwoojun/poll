@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2013有色金属调查问卷 - 上海有色网 </title>
+<meta name="keywords" content="上海有色网,上海有色金属网,有色金属价格,有色金属价格行情,上海金属网,长江有色金属网,今日铜价,现货行情,中国有色网,全球金属,今日金价,白银价格走势,铝价格,金属资讯,不锈钢,投资,期货交易" />
+<meta name="description" content="上海有色网(原上海有色金属网),提供最新的长江现货以及有色金属交易信息.有色金属现货价格的风向标,品种涵盖基本金属-铜,铝,铅,锌,锡,镍,小金属,贵金属,稀土等,是有色金属行业的门户网站,点击率居世界有色网站之前列" />
+<link rel="stylesheet" type="text/css" href="css/poll.css" />
+<script src="css/jquery(1.8.3).min.js"></script>
+<script type="text/javascript">
+	$.fn.select_value = function(str){
+		$("#"+str).attr("checked",true);
+		if(str == 'question02_7'){
+			$("input:checkbox").each(function(i) {
+				id = i + 1;
+				if($(this).attr("checked") == 'checked'){	
+					$("#question_prices_"+id).show();
+				}else{
+					$("#question_prices_"+id).hide();
+				}
+			});
+		}
+	}
+	$(function() {
+		$("input:checkbox").click(function() {
+			$("input:checkbox").each(function(i) {
+				id = i + 1;
+				if($(this).attr("checked") == 'checked'){	
+					$("#question_prices_"+id).show();
+				}else{
+					$("#question_prices_"+id).hide();
+				}
+			});
+		});
+	});
+	$.fn.req_res = function(html){
+		$("#ntcwin").fadeIn("slow");
+		setTimeout("$('#ntcwin').fadeOut('slow')",3000)
+		var jsonobj = eval('('+html+')');
+		$("#req_res").html(jsonobj.message);
+		if(jsonobj.id != null){
+			if(jsonobj.id == '0'){
+				setTimeout(" window.location.href='http://www.smm.cn'",3000);
+			}
+			$.fn.req_css(jsonobj.id);
+		}
+	}
+	$.fn.req_css = function(str){
+		$('.question > .title').each(function(i) {
+			$(this).attr("style",'');
+		});
+		$.each(str,function(key,val){
+			$("#question"+val).attr("style","color:red");
+			if(key == '0'){
+				$(document).scrollTop($("#question"+str).offset().top);
+			}
+		});
+	}
+	$.fn.change= function(obj,str){
+		var html = $(obj).val();
+		$("#"+str).attr('value','其他_'+html);
+	}
+</script>
+</head>
+<body>
+<div id="append_parent">
+	<div id="ntcwin" class="ntcwin" style="position: fixed; z-index: 501; opacity: 0.9; left: 582.5px; top: 191.5px;display:none">
+		<table cellspacing="0" cellpadding="0" class="popupcredit">
+			<tbody>
+				<tr>
+				<td class="pc_l">&nbsp;</td>
+				<td class="pc_c"><div class="pc_inner wx" id="req_res"></div></td>
+				<td class="pc_r">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="topnav"></div>
+<div id="wp" class="wp">
+    <div class="mn">
+        <div class="info wx">
+            <h1>2013年有色金属价格调查问卷</h1>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;您好，我们上海有色网（SMM）正在做一个关于2013年有色金属价格的调查，希望您在百忙之中抽出一点宝贵的时间，协助我们完成以下这份调查问卷。您的意见对有色金属行业很重要，我们将在SMM年会和网站上公布此次调查的统计结果，谢谢您的合作！
+            请认真阅读每一个问题，并在适合的答案序号上画圈，或在“    ”处填上适当的内容。</p>
+        </div>
+        <form id="pollform" action="../poll.php" method="post">
+        <div class="poll" id="pollcontent">
+            <table cellspacing="0" cellpadding="0">
+                <thead><tr><th>一、公司类型业务</th></tr></thead>
+                <tbody>
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question01"><span><h3>1、根据主营类型，您所在的公司属于</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question01" id="question01_1" value="生产商" ><label for= 'question01_1'>A、生产商</label></li>
+                                <li><input type="radio" name="question01" id="question01_2" value="贸易商" ><label for= 'question01_2'>B、贸易商</label></li>
+                                <li><input type="radio" name="question01" id="question01_3" value="加工商" ><label for= 'question01_3'>C、加工商</label></li>
+                                <li><input type="radio" name="question01" id="question01_4" value="其他" ><label for= 'question01_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question01_4')" onblur="$.fn.change(this,'question01_4')"> </li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class='question'>
+                            <div class="title" id="question02"><span><h3>2、您的公司涉及哪些金属业务（可选多个答案）：</h3></span></div>
+                            <div class="select">
+                                <li><input type="checkbox" name="question02[0]" id="question02_1" value="铜" ><label for= 'question02_1'>A、铜</label></li>
+                                <li><input type="checkbox" name="question02[1]" id="question02_2" value="铝" ><label for= 'question02_2'>B、铝</label></li>
+                                <li><input type="checkbox" name="question02[2]" id="question02_3" value="铅" ><label for= 'question02_3'>C、铅</label></li>
+                                <li><input type="checkbox" name="question02[3]" id="question02_4" value="锌" ><label for= 'question02_4'>D、锌</label></li>
+                                <li><input type="checkbox" name="question02[4]" id="question02_5" value="镍" ><label for= 'question02_5'>E、镍</label></li>
+                                <li><input type="checkbox" name="question02[5]" id="question02_6" value="锡" ><label for= 'question02_6'>F、锡</label></li>
+                                <li><input type="checkbox" name="question02[6]"id="question02_7" value="其他" ><label for= 'question02_7'>G、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question02_7')" onblur="$.fn.change(this,'question02_7')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table cellspacing="0" cellpadding="0" >
+                <thead><tr><th>二、铜价判断</th></tr></thead>
+				<tbody id='question_prices_1' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question03"><span><h3>1、您认为2013年铜价最有可能的运行期间是：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question03" id="question03_1" value="6500-8500美元/吨" ><label for= 'question03_1'>A、6500-8500美元/吨</label></li>
+                                <li><input type="radio" name="question03" id="question03_2" value="6800-8800美元/吨" ><label for= 'question03_2'>B、6800-8800美元/吨</label></li>
+                                <li><input type="radio" name="question03" id="question03_3" value="7200-9300美元/吨" ><label for= 'question03_3'>C、7200-9300美元/吨</label></li>
+                                <li><input type="radio" name="question03" id="question03_4" value="其他" ><label for= 'question03_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question03_4')" onblur="$.fn.change(this,'question03_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class='question'>
+                            <div class="title" id="question04"><span><h3>2、您认为2013年铜价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question04" id="question04_1" value="一季度" ><label for= 'question04_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question04" id="question04_2" value="二季度" ><label for= 'question04_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question04" id="question04_3" value="三季度" ><label for= 'question04_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question04" id="question04_4" value="四季度" ><label for= 'question04_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question05"><span><h3>3、您认为2013年铜价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question05" id="question05_1" value="一季度" ><label for= 'question05_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question05" id="question05_2" value="二季度" ><label for= 'question05_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question05" id="question05_3" value="三季度" ><label for= 'question05_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question05" id="question05_4" value="四季度" ><label for= 'question05_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>三、铝价判断</th></tr></thead>
+				<tbody id='question_prices_2' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question06"><span><h3>1、您认为2013年铝价最有可能的运行期间是</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question06" id="question06_1" value="13000-16000元/吨" ><label for= 'question06_1'>A、13000-16000元/吨</label></li>
+                                <li><input type="radio" name="question06" id="question06_2" value="15000-18000元/吨" ><label for= 'question06_2'>B、15000-18000元/吨</label></li>
+                                <li><input type="radio" name="question06" id="question06_3" value="18000元/吨以上" ><label for= 'question06_3'>C、18000元/吨以上</label></li>
+                                <li><input type="radio" name="question06" id="question06_4" value="其他" ><label for= 'question06_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question06_4')" onblur="$.fn.change(this,'question06_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question07"><span><h3>2、您认为2013年铝价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question07" id="question07_1" value="一季度" ><label for= 'question07_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question07" id="question07_2" value="二季度" ><label for= 'question07_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question07" id="question07_3" value="三季度" ><label for= 'question07_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question07" id="question07_4" value="四季度" ><label for= 'question07_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question08"><span><h3>3、您认为2013年铝价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question08" id="question08_1" value="一季度" ><label for= 'question08_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question08" id="question08_2" value="二季度" ><label for= 'question08_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question08" id="question08_3" value="三季度" ><label for= 'question08_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question08" id="question08_4" value="四季度" ><label for= 'question08_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>四、铅价判断</th></tr></thead>
+				<tbody id='question_prices_3' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question09"><span><h3>1、您认为2013年铅价最有可能的运行期间是：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question09" id="question09_1" value="14000-16500吨" ><label for= 'question09_1'>A、14000-16500吨</label></li>
+                                <li><input type="radio" name="question09" id="question09_2" value="14500-17000元/吨" ><label for= 'question09_2'>B、14500-17000元/吨</label></li>
+                                <li><input type="radio" name="question09" id="question09_3" value="14500-17500元/吨" ><label for= 'question09_3'>C、14500-17500元/吨</label></li>
+                                <li><input type="radio" name="question09" id="question09_4" value="其他" ><label for= 'question09_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question09_4')" onblur="$.fn.change(this,'question09_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question010"><span><h3>2、您认为2013年铅价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question010" id="question010_1" value="一季度" ><label for= 'question010_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question010" id="question010_2" value="二季度" ><label for= 'question010_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question010" id="question010_3" value="三季度" ><label for= 'question010_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question010" id="question010_4" value="四季度" ><label for= 'question010_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question011"><span><h3>3、您认为2013年铅价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question011" id="question011_1" value="一季度" ><label for= 'question011_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question011" id="question011_2" value="二季度" ><label for= 'question011_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question011" id="question011_3" value="三季度" ><label for= 'question011_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question011" id="question011_4" value="四季度" ><label for= 'question011_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>五、锌价判断</th></tr></thead>
+				<tbody id='question_prices_4' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question012"><span><h3>1、您认为2013年锌价最有可能的运行期间是：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question012" id="question012_1" value="14000-16000元/吨" ><label for= 'question012_1'>A、14000-16000元/吨</label></li>
+                                <li><input type="radio" name="question012" id="question012_2" value="14500-16500元/吨" ><label for= 'question012_2'>B、14500-16500元/吨</label></li>
+                                <li><input type="radio" name="question012" id="question012_3" value="14500-17000元/吨" ><label for= 'question012_3'>C、14500-17000元/吨</label></li>
+                                <li><input type="radio" name="question012" id="question012_4" value="其他" ><label for= 'question012_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question012_4')" onblur="$.fn.change(this,'question012_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question013"><span><h3>2、您认为2013年锌价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question013" id="question013_1" value="一季度" ><label for= 'question013_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question013" id="question013_2" value="二季度" ><label for= 'question013_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question013" id="question013_3" value="三季度" ><label for= 'question013_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question013" id="question013_4" value="四季度" ><label for= 'question013_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question014"><span><h3>3、您认为2013年锌价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question014" id="question014_1" value="一季度" ><label for= 'question014_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question014" id="question014_2" value="二季度" ><label for= 'question014_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question014" id="question014_3" value="三季度" ><label for= 'question014_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question014" id="question014_4" value="四季度" ><label for= 'question014_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>六、镍价判断</th></tr></thead>
+				<tbody id='question_prices_5' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question015"><span><h3>1、您认为2013年镍价最有可能的运行期间是：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question015" id="question015_1" value="15000-20000美元/吨" ><label for= 'question015_1'>A、15000-20000美元/吨</label></li>
+                                <li><input type="radio" name="question015" id="question015_2" value="17000-22000美元/吨" ><label for= 'question015_2'>B、17000-22000美元/吨</label></li>
+                                <li><input type="radio" name="question015" id="question015_3" value="20000-25000美元/吨" ><label for= 'question015_3'>C、20000-25000美元/吨</label></li>
+                                <li><input type="radio" name="question015" id="question015_4" value="其他" ><label for= 'question015_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question015_4')" onblur="$.fn.change(this,'question015_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question016"><span><h3>2、您认为2013年镍价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question016" id="question016_1" value="一季度" ><label for= 'question016_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question016" id="question016_2" value="二季度" ><label for= 'question016_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question016" id="question016_3" value="三季度" ><label for= 'question016_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question016" id="question016_4" value="四季度" ><label for= 'question016_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question017"><span><h3>3、您认为2013年镍价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question017" id="question017_1" value="一季度" ><label for= 'question017_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question017" id="question017_2" value="二季度" ><label for= 'question017_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question017" id="question017_3" value="三季度" ><label for= 'question017_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question017" id="question017_4" value="四季度" ><label for= 'question017_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>七、锡价判断</th></tr></thead>
+				<tbody id='question_prices_6' class = "question_prices">
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question018"><span><h3>1、您认为2013年锡价最有可能的运行期间是：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question018" id="question018_1" value="15000-22000美元/吨" ><label for= 'question018_1'>A、15000-22000美元/吨</label></li>
+                                <li><input type="radio" name="question018" id="question018_2" value="17000-26000美元/吨" ><label for= 'question018_2'>B、17000-26000美元/吨</label></li>
+                                <li><input type="radio" name="question018" id="question018_3" value="20000-28000美元/吨" ><label for= 'question018_3'>C、20000-28000美元/吨</label></li>
+                                <li><input type="radio" name="question018" id="question018_4" value="其他" ><label for= 'question018_4'>D、其他</label><input class="text" type="text" value="" onclick="$.fn.select_value('question018_4')" onblur="$.fn.change(this,'question018_4')"></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question019"><span><h3>2、您认为2013年锡价的高点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question019" id="question019_1" value="一季度" ><label for= 'question019_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question019" id="question019_2" value="二季度" ><label for= 'question019_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question019" id="question019_3" value="三季度" ><label for= 'question019_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question019" id="question019_4" value="四季度" ><label for= 'question019_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question020"><span><h3>3、您认为2013年锡价的低点最有可能出现在哪个季度？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question020" id="question020_1" value="一季度" ><label for= 'question020_1'>A、一季度</label></li>
+                                <li><input type="radio" name="question020" id="question020_2" value="二季度" ><label for= 'question020_2'>B、二季度</label></li>
+                                <li><input type="radio" name="question020" id="question020_3" value="三季度" ><label for= 'question020_3'>C、三季度</label></li>
+                                <li><input type="radio" name="question020" id="question020_4" value="四季度" ><label for= 'question020_4'>D、四季度</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<table cellspacing="0" cellpadding="0">
+                <thead><tr><th>八、综合判断</th></tr></thead>
+				<tbody>
+                <tr>
+                    <td class="title">
+                        <div class='question'>
+                            <div class="title" id="question021"><span><h3>1、在基本金属中，您认为哪个品种明年的走势相对最为强劲？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question021" id="question021_1" value="铜" ><label for= 'question021_1'>A、铜</label></li>
+                                <li><input type="radio" name="question021" id="question021_2" value="铝" ><label for= 'question021_2'>B、铝</label></li>
+                                <li><input type="radio" name="question021" id="question021_3" value="铅" ><label for= 'question021_3'>C、铅</label></li>
+                                <li><input type="radio" name="question021" id="question021_4" value="锌" ><label for= 'question021_4'>D、锌</label></li>
+                                <li><input type="radio" name="question021" id="question021_5" value="镍" ><label for= 'question021_5'>E、镍</label></li>
+                                <li><input type="radio" name="question021" id="question021_6" value="锡" ><label for= 'question021_6'>F、锡</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question022"><span><h3>2、您对2013年基本金属总体供需状况的判断是？</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question022" id="question022_1" value="供大于求" ><label for= 'question022_1'>A、供大于求</label></li>
+                                <li><input type="radio" name="question022" id="question022_2" value="供需基本平衡" ><label for= 'question022_2'>B、供需基本平衡</label></li>
+                                <li><input type="radio" name="question022" id="question022_3" value="供小于求" ><label for= 'question022_3'>C、供小于求</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+						<div class='question'>
+                            <div class="title" id="question023"><span><h3>3、你所在公司的当前库存水平与去年同期相比，处于：</h3></span></div>
+                            <div class="select">
+                                <li><input type="radio" name="question023" id="question023_1" value="低位" ><label for= 'question023_1'>A、低位</label></li>
+                                <li><input type="radio" name="question023" id="question023_2" value="差不多" ><label for= 'question023_2'>B、差不多</label></li>
+                                <li><input type="radio" name="question023" id="question023_3" value="高位" ><label for= 'question023_3'>C、高位</label></li>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<div id="return_pollresult" sytle="display:none;">对于您所提供的协助，我们表示诚挚的感谢！为了保证资料的完整与详实，请你再花一分钟，检查一下自己填过的问卷，看看是否有填错、填漏的地方，谢谢！</div>
+        </div>
+        <div class="btn cl">
+        <button type="submit" name="choose" class="submit" value="1" id="submit">提交</button>
+        </div>
+        </form>
+        <div class="cl" id="ft"><p></p><p>&copy; 2001-2010 <a target="_blank" href="" title=""></a></p></div>
+    </div>
+</div>
+
+<div>&nbsp;</div>
+<script type="text/javascript">
+$('body').delegate('#submit','click',function(){
+	$.ajax({'type':'POST',
+			'url':'../poll.php',
+			'cache':false,
+			'data':$(this).parents("form").serialize(),
+			'success':function(html){$.fn.req_res(html);}
+	});
+	return false;
+});
+</script>
+</body>
+</html>
